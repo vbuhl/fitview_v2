@@ -1,0 +1,21 @@
+<h1>Trainings</h1>
+<div class="row">
+    <div ng-repeat="training in vm.trainings">
+        <form novalidate method="post">
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Date: {{training.date}}
+                        <!--<button ng-click="removeDish(foodclub._id)" class="fa fa-trash pull-right"></button>
+                        <button ng-click="updateDish(foodclub._id)" class="fa fa-pencil pull-right"></button>-->
+                    </div>
+                    <div class="panel-body">
+                        Category: {{training.category}}<br/>
+                        Duration: {{training.duration}}<br/>
+                        Comment: {{training.comment}}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
