@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var trainingModel = require('../data/trainingsModel');
+var mongoose = require('mongoose');
+
 
 //get trainings
 router.get('/trainings', function(req, res, next) {
@@ -14,15 +16,28 @@ router.get('/trainings', function(req, res, next) {
 });
 /* POST create training. */
 router.post('/createTraining', function(req, res) {
+   var db = mongoose.connection;
     db.collection('trainings').insertOne({
         "category": req.body.category,
         "date": req.body.date,
         "duration": req.body.duration,
         "comment": req.body.comment,
     }, function(err, result){
+        console.log(err);
         console.log("document inserted into the trainings collection");
-        res.send(200);
+        res.sendStatus(200);
     });
+    /*var trainingtest = [{
+        "category": "crossfit",
+        "date": "2015-09-09",
+        "duration": "1:30",
+        "comment": "testing hardcoded2"}];
+    trainingModel.create(
+        trainingtest
+    , function(err, result){
+        console.log("document inserted into the trainings collection");
+        res.sendStatus(200);
+    })*/
 });
 
 /* POST remove training. */

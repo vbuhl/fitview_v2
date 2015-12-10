@@ -3,57 +3,27 @@
     angular.module('app.trainings', [])
         .controller('trainingsCtrl', trainingsCtrl);
 
-    function trainingsCtrl(trainingsService){
-        var vm = this;
-        vm.createTraining = createTraining;
-        vm.trainings = trainingsService.getTrainings()
-            .then(function(result){
-                console.log(result);
-                vm.trainings = result;
-            });
+    function trainingsCtrl(trainingsService, $scope){
+        //var vm = this;
+        //vm.createTraining = createTraining;
+        var modeltrainings = function(result){
+            console.log(result);
+            $scope.trainings = result;
+        }
 
-        function createTraining(){
-            console.log("Test create training");
+        trainingsService.getTrainings()
+            .then(modeltrainings);
+
+        $scope.createTraining = function(){
+            console.log("Test create training ", this);
             var newTraining = {
-                category: vm.category,
-                date: vm.date,
-                duration: vm.duration,
-                comment: vm.comment,
+                category: this.category,
+                date: this.date,
+                duration: this.duration,
+                comment: this.comment,
             }
             trainingsService.createTraining(newTraining);
         }
 
     }
 })();
-/*(function () {
-    'use strict';
-
-    angular.module('app.foodclubs', [])
-        .controller('foodclubsCtrl', foodclubsController);
-
-    function foodclubsController(foodclubsService){
-        var vm = this;
-        vm.createFoodclub = createFoodclub;
-        vm.foodclubs = foodclubsService.getFoodclubs()
-            .then(function(result){
-                console.log(result);
-                vm.foodclubs = result;
-            });
-
-        function createFoodclub(){
-            console.log("Test create foodclub");
-            var newDish = {
-                month: vm.month,
-                year: vm.year,
-                place: vm.place,
-                dish: vm.dish,
-                dessert: vm.dessert,
-                missing: vm.missing,
-                guests: vm.guests
-            }
-            foodclubsService.createFoodclub(newDish);
-        }
-
-
-    }
-})();*/
