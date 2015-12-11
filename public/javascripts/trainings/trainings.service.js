@@ -12,11 +12,12 @@
         };
 
 
-        var createTraining = function(newTraining){
+        var createTraining = function(newTraining/*, $location*/){
             //console.log(newTraining);
             return $http.post('/createTraining', newTraining)
                 .success(function (data) {
                     console.log("training created");
+                    //$location.path('/trainings')
                     console.log(data);
                 })
                 .error(function (data) {

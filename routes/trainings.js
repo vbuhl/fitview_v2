@@ -27,17 +27,8 @@ router.post('/createTraining', function(req, res) {
         console.log("document inserted into trainings");
         res.sendStatus(200);
     });
-    /*var trainingtest = [{
-        "category": "crossfit",
-        "date": "2015-09-09",
-        "duration": "1:30",
-        "comment": "testing hardcoded2"}];
-    trainingModel.create(
-        trainingtest
-    , function(err, result){
-        console.log("document inserted into the trainings collection");
-        res.sendStatus(200);
-    })*/
+    //res.redirect('/trainings');
+
 });
 
 /* POST delete training. */

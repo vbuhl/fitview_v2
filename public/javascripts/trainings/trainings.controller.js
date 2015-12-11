@@ -3,7 +3,7 @@
     angular.module('app.trainings', [])
         .controller('trainingsCtrl', trainingsCtrl);
 
-    function trainingsCtrl(trainingsService, $scope){
+    function trainingsCtrl(trainingsService, $scope, $location){
         //var vm = this;
         //vm.createTraining = createTraining;
         var modeltrainings = function(result){
@@ -23,7 +23,19 @@
                 comment: this.comment,
             }
             trainingsService.createTraining(newTraining);
+            $location.path('/trainings');
+            //console.log("path" + l);
+            /*var defaultForm = {
+                category : "",
+                date : "",
+                duration: "",
+                comment: ""
+            };
+            $scope.trainingform.$setPristine();
+            $scope.comment = "";*/
+
         }
+
 
         /*$scope.deleteTraining = function(){
             trainingsService.deleteTraining($scope.trainings.id);
