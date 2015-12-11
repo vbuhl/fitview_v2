@@ -10,26 +10,14 @@
             $routeProvider
                 .when("/", {
                     templateUrl: '../views/trainings.html',
-                    controller: 'trainingsCtrl as vm'
+                    controller: 'trainingsCtrl'
                 }).when('/createTraining', {
                     templateUrl: 'views/createTraining.html',
-                    controller: 'trainingsCtrl as vm'
+                    controller: 'trainingsCtrl'
+                }).when('/deleteTraining', {
+                    templateUrl: 'views/deleteTraining.html',
+                    controller: 'trainingsCtrl'
                 }).otherwise({ redirectTo: '/' });
         })
 }());
 
-/*(function () {
-    'use strict';
-
-    angular.module('app', ['ngRoute', 'app.foodclubs'])
-        .config(function($routeProvider){
-            $routeProvider
-                .when('/', {
-                    templateUrl: 'views/foodclubs.html',
-                    controller: 'foodclubsCtrl as vm'
-                }).when('/createFoodclub', {
-                    templateUrl: 'views/createFoodclub.html',
-                    controller: 'foodclubsCtrl as vm'
-                }).otherwise({ redirectTo: '/' });
-        })
-})();*/

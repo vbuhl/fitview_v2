@@ -15,7 +15,7 @@
             .then(modeltrainings);
 
         $scope.createTraining = function(){
-            console.log("Test create training ", this);
+            //console.log("Test create training ", this);
             var newTraining = {
                 category: this.category,
                 date: this.date,
@@ -25,5 +25,19 @@
             trainingsService.createTraining(newTraining);
         }
 
+        /*$scope.deleteTraining = function(){
+            trainingsService.deleteTraining($scope.trainings.id);
+            console.log('training is now deleted');
+        };*/
+
+        $scope.deleteTraining = function(id){
+            //console.log("Testing delete training", this);
+            trainingsService.deleteTraining(id)
+                .then(trainingsService.getTrainings()
+                    .then(function(result){
+                        console.log(result);
+                        $scope.trainings = result;
+                    }));
+        }
     }
 })();

@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-//var favicon = require('serve-favicon');
+var favicon = require('serve-favicon');
 //var logger = require('morgan');
 //var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -11,7 +11,7 @@ var trainings = require('./routes/trainings');
 var app = express();
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));//false?
@@ -22,7 +22,7 @@ app.set('port', (process.env.PORT || 3000));//THIS
 
 app.get('/trainings', trainings);
 app.post('/createTraining', trainings);
-app.post('/removeTraining', trainings);
+app.post('/deleteTraining', trainings);
 
 mongoose.connect('mongodb://vbuhl:fitview@ds045454.mongolab.com:45454/fitview');
 var db = mongoose.connection;

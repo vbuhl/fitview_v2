@@ -24,7 +24,7 @@ router.post('/createTraining', function(req, res) {
         "comment": req.body.comment,
     }, function(err, result){
         console.log(err);
-        console.log("document inserted into the trainings collection");
+        console.log("document inserted into trainings");
         res.sendStatus(200);
     });
     /*var trainingtest = [{
@@ -40,19 +40,20 @@ router.post('/createTraining', function(req, res) {
     })*/
 });
 
-/* POST remove training. */
-/*router.post('/removeTraining', function(req, res){
-    var collection = db.collection("trainings");
-    MessageModel.remove({_id:req.body.id}, function(err, records){
+/* POST delete training. */
+router.post('/deleteTraining', function(req, res){
+    //var collection = db.collection("trainings");
+    trainingModel.remove({_id:req.body.id}, function(err, records){
         if(err){
-            console.log("Error" + err);
-            res.send(400);
+            console.log("Error " + err);
+            res.sendStatus(400);
         }
         else{
-            console.log("training Removed");
-            res.send(200);
+            console.log("training deleted");
+            res.sendStatus(200);
         }
     });
-});*/
+});
+
 
 module.exports = router;

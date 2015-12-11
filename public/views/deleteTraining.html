@@ -1,11 +1,15 @@
-<h1>Trainings</h1>
+<h1>Delete trainings</h1>
 <div class="row">
     <div ng-repeat="training in trainings">
         <form novalidate method="post">
             <div class="col-md-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
+                        <!--<div class="hidden" id="id" name="id">{{training.id}}</div>-->
                         Date: {{training.date | date:'dd MMM yyyy'}}
+                        <button type="button" class="btn btn-default btn-xs pull-right" ng-click="deleteTraining(training._id)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
                     </div>
                     <div class="panel-body">
                         Category: {{training.category}}<br/>
